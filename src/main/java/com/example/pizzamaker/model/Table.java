@@ -4,51 +4,51 @@ import java.util.Objects;
 
 public class Table {
 
-    private String id;
-    private String number;
-    private String seats;
-    private String busy;
+    private int id;
+    private int number;
+    private int seats;
+    private boolean busy;
 
     public Table() {
 
     }
 
-    public Table(String id, String number, String seats, String busy) {
+    public Table(int id, int number, int seats, boolean busy) {
         this.id = id;
         this.number = number;
         this.seats = seats;
         this.busy = busy;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
-    public String getSeats() {
+    public int getSeats() {
         return seats;
     }
 
-    public void setSeats(String seats) {
+    public void setSeats(int seats) {
         this.seats = seats;
     }
 
-    public String getBusy() {
+    public boolean isBusy() {
         return busy;
     }
 
-    public void setBusy(String busy) {
+    public void setBusy(boolean busy) {
         this.busy = busy;
     }
 
@@ -57,7 +57,7 @@ public class Table {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Table table = (Table) o;
-        return id.equals(table.id) && number.equals(table.number) && seats.equals(table.seats) && busy.equals(table.busy);
+        return id == table.id && number == table.number && seats == table.seats && busy == table.busy;
     }
 
     @Override
@@ -68,10 +68,11 @@ public class Table {
     @Override
     public String toString() {
         return "Table{" +
-                "id='" + id + '\'' +
-                ", number='" + number + '\'' +
-                ", seats='" + seats + '\'' +
-                ", busy='" + busy + '\'' +
+                "id=" + id +
+                ", number=" + number +
+                ", seats=" + seats +
+                ", busy=" + busy +
                 '}';
     }
 }
+
