@@ -13,7 +13,6 @@ public class TableRepository {
         return null;
     }
     public void create() {
-
     }
     public Table update(int id, Table table) {
         return null;

@@ -10,7 +10,6 @@ public class Table {
     private boolean busy;
 
     public Table() {
-
     }
 
     public Table(int id, int number, int seats, boolean busy) {

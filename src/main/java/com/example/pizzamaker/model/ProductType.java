@@ -3,8 +3,8 @@ package com.example.pizzamaker.model;
 import java.util.Objects;
 
 public class ProductType {
-private int id;
-private String name;
+    private int id;
+    private String name;
 
     public ProductType() {
     }
