@@ -10,6 +10,8 @@ public interface ProductTypeService {
 
     List<ProductType> readAll();
 
+    ProductType read(String name);
+
     void create();
 
     ProductType update(int id, ProductType productType);
