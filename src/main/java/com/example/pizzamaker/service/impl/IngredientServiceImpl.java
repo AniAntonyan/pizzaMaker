@@ -14,13 +14,13 @@ public class IngredientServiceImpl implements IngredientService {
     }
 
     @Override
-    public List<Ingredient> readAll() {
-        return ingredientRepository.readAll();
+    public Ingredient read(String name) {
+        return ingredientRepository.read(name);
     }
 
     @Override
-    public Ingredient read(String name) {
-        return ingredientRepository.read(name);
+    public List<Ingredient> readAll() {
+        return ingredientRepository.readAll();
     }
 
     @Override

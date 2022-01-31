@@ -1,6 +1,8 @@
 package com.example.pizzamaker.controller;
 
 import com.example.pizzamaker.model.ProductType;
+import com.example.pizzamaker.service.ProductTypeService;
+import com.example.pizzamaker.service.impl.ProductTypeServiceImpl;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -14,23 +16,35 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class ProductTypeController extends HttpServlet {
+    private final ProductTypeService productTypeService = new ProductTypeServiceImpl();
     private List<ProductType> list = new LinkedList<>();
     private static Random random = new Random();
     private Gson gson = new Gson();
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("this is GET method");
+        List<ProductType> data = new LinkedList<>();
+        final String url = req.getParameter("url");
 
-        if(list.size() == 0) {
-            for (int i = 0; i < 10; i++) {
-                list.add(new ProductType(i, "productType"+i));
-
-            }
-            System.out.println(list);
+        switch (url) {
+            case "get-all":
+                data = productTypeService.readAll();
+                break;
+            case "get-by-id":
+                int id = Integer.parseInt(req.getParameter("id"));
+                data.add(productTypeService.read(id));
+                break;
+            case "get-by-name":
+                String name = req.getParameter("name");
+                data.add(productTypeService.read(name));
+                break;
+            default:
+                resp.sendError(404, "provided URL not found for analyse");
+                break;
         }
 
-        resp.getWriter().println(gson.toJson(list));
+        resp.getWriter().println(gson.toJson(data));
     }
 
     @Override
@@ -40,11 +54,11 @@ public class ProductTypeController extends HttpServlet {
         int id = list.get(list.size() - 1).getId() + 1;
         String name = req.getParameter("name");
 
-        ProductType data = new ProductType(id,name);
+        //ProductType data = new ProductType(id,name);
 
-        list.add(data);
+        //list.add(data);
 
-        resp.getWriter().println(gson.toJson(list));
+        //resp.getWriter().println(gson.toJson(list));
     }
 
     @Override

@@ -102,46 +102,29 @@ public class IngredientRepository {
         return data;
     }
 
-
-
     public void create(Ingredient ingredient) {
         Connection connection = SQLConnector.getConnection();
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `ingredient` values (0,?,?,?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `ingredient` values (0,?)");
             preparedStatement.setString(1, ingredient.getName());
-            preparedStatement.setBoolean(2, ingredient.isEditable());
-            preparedStatement.setInt(3, ingredient.getEditStep());
-            preparedStatement.setInt(4, ingredient.getMinBound());
-            preparedStatement.setInt(5,ingredient.getMaxBound());
-            preparedStatement.setString(6,ingredient.getMeasurement());
-
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
             connection.close();
 
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
     }
 
     public Ingredient update(Ingredient ingredient) {
 
         Connection connection = SQLConnector.getConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE `ingredient` SET name = ?, editable = ?, edit_step=?, min_bound=?, max_bound=?, measurement=? WHERE id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE `ingredient` SET name = ? WHERE id = ?");
             preparedStatement.setString(1,ingredient.getName());
-            preparedStatement.setBoolean(2,ingredient.isEditable());
-            preparedStatement.setInt(3, ingredient.getEditStep());
-            preparedStatement.setInt(4,ingredient.getMinBound());
-            preparedStatement.setInt(5,ingredient.getMaxBound());
-            preparedStatement.setString(6,ingredient.getMeasurement());
-            preparedStatement.setInt(7,ingredient.getId());
-
+            preparedStatement.setInt(2,ingredient.getId());
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
 
         } catch (SQLException exception) {
@@ -153,7 +136,6 @@ public class IngredientRepository {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
         return ingredient;
     }
 
@@ -187,11 +169,6 @@ public class IngredientRepository {
         Ingredient ingredient = new Ingredient();
         ingredient.setId(resultSet.getInt("id"));
         ingredient.setName(resultSet.getString("name"));
-        ingredient.setEditable(resultSet.getBoolean("editable"));
-        ingredient.setEditStep(resultSet.getInt("edit_step"));
-        ingredient.setMinBound(resultSet.getInt("min_bound"));
-        ingredient.setMaxBound(resultSet.getInt("max_bound"));
-        ingredient.setMeasurement(resultSet.getString("measurement"));
         return ingredient;
     }
 }

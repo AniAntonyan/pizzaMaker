@@ -15,9 +15,8 @@ public class Product {
    private int productTypeId;
    private String name;
    private float price;
-   private String img;
-   private int quantity;
-   //private List<Integer> ingredientsIdList;
+   private String imagePath;
+   private String currency;
 
 }
 

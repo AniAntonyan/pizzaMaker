@@ -53,13 +53,8 @@ public class IngredientController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String name = req.getParameter("name");
-        boolean editable = Boolean.parseBoolean(req.getParameter("editable"));
-        int editStep = Integer.parseInt(req.getParameter("editStep"));
-        int minBound = Integer.parseInt(req.getParameter("minBound"));
-        int maxBound = Integer.parseInt(req.getParameter("maxBound"));
-        String measurement = req.getParameter("measurement");
 
-        Ingredient ingredient = new Ingredient(0, name, editable, editStep, minBound, maxBound, measurement);
+        Ingredient ingredient = new Ingredient(0, name);
         ingredientService.create(ingredient);
     }
 
@@ -80,14 +75,10 @@ public class IngredientController extends HttpServlet {
         int id= Integer.parseInt(req.getParameter("id"));
         ingredientService.delete(id);
     }
+
     private Ingredient mapper(HttpServletRequest req) {
         int id;
         String name;
-        boolean editable;
-        int editStep;
-        int minBound;
-        int maxBound;
-        String measurement;
 
         try {
             id = Integer.parseInt(req.getParameter("id"));
@@ -96,32 +87,11 @@ public class IngredientController extends HttpServlet {
         }
         try {
             name = req.getParameter("name");
-        } catch (NumberFormatException ex) {
+        } catch (Exception ex) {
             name = "";
         }
-        try {
-            editStep = Integer.parseInt(req.getParameter("edit-step"));
-        } catch (NumberFormatException ex) {
-            editStep = 0;
-        }
-        try {
-            minBound = Integer.parseInt(req.getParameter("min-bound"));
-        } catch (NumberFormatException ex) {
-            minBound = 0;
-        }
-        try {
-            maxBound = Integer.parseInt(req.getParameter("max-bound"));
-        } catch (NumberFormatException ex) {
-            maxBound = 0;
-        }
-        try {
-            measurement = req.getParameter("measurement");
-        } catch (NumberFormatException ex) {
-            measurement = "";
-        }
 
-        editable = Boolean.parseBoolean(req.getParameter("editable"));
-        Ingredient ingredient = new Ingredient(id, name, editable, editStep, minBound, maxBound, measurement);
+        Ingredient ingredient = new Ingredient(id, name);
         return ingredient;
     }
 }

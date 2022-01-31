@@ -11,30 +11,32 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     public ProductType read(int id) {
-        return null;
+        return productTypeRepository.read(id);
     }
 
     @Override
     public List<ProductType> readAll() {
-        return null;
+        return productTypeRepository.readAll();
     }
 
+
     @Override
-    public ProductType read(String name) {
-        return null;
-    }
-    @Override
-    public void create() {
+    public void create(ProductType productType) {
 
     }
 
     @Override
-    public ProductType update(int id, ProductType productType) {
+    public ProductType update(int id, ProductType table) {
         return null;
     }
 
     @Override
     public void delete(int id) {
 
+    }
+
+    @Override
+    public ProductType read(String name) {
+        return productTypeRepository.read(name);
     }
 }

@@ -12,7 +12,7 @@ public interface ProductTypeService {
 
     ProductType read(String name);
 
-    void create();
+    void create(ProductType productType);
 
     ProductType update(int id, ProductType productType);
 

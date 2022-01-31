@@ -1,16 +1,17 @@
 package com.example.pizzamaker.service;
 
 import com.example.pizzamaker.model.Product;
+import com.example.pizzamaker.model.dto.ProductDto;
 
 import java.util.List;
 
 public interface ProductService {
 
-    Product read(int id);
+    ProductDto read(int id);
 
-    Product readByProductType(int productTypeId);
+    List<ProductDto> readAll();
 
-    List<Product> readAll();
+    List<ProductDto> readAllByProductType(int productTypeId);
 
     void create();
 
