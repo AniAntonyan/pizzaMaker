@@ -38,10 +38,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDto> readAll() {
-        ProductDto productDto=new ProductDto();
-        List<ProductDto> fromData=productRepository.readAll();
-
-
+//        ProductDto productDto=new ProductDto();
+//        List<ProductDto> fromData=productRepository.readAll();
+          return null;
     }
 
     @Override

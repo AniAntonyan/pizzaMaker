@@ -17,6 +17,5 @@ public class Product {
    private float price;
    private String imagePath;
    private String currency;
-
 }
 

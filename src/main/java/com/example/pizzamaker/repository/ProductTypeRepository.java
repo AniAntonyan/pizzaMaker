@@ -18,7 +18,7 @@ public class ProductTypeRepository {
         PreparedStatement pstmt = null;
         ResultSet resultSet = null;
         try {
-            pstmt = connection.prepareStatement("SELECT * FROM `productType` WHERE id=?");
+            pstmt = connection.prepareStatement("SELECT * FROM `product_type` WHERE id=?");
             pstmt.setInt(1, id);
             resultSet = pstmt.executeQuery();
 
@@ -48,7 +48,7 @@ public class ProductTypeRepository {
         PreparedStatement pstmt = null;
         ResultSet resultSet = null;
         try {
-            pstmt = connection.prepareStatement("SELECT * FROM `productType` WHERE name=?");
+            pstmt = connection.prepareStatement("SELECT * FROM `product_type` WHERE name=?");
             pstmt.setString(1,name);
             resultSet = pstmt.executeQuery();
 
@@ -79,7 +79,7 @@ public class ProductTypeRepository {
         ResultSet resultSet = null;
 
         try {
-            pstmt = connection.prepareStatement("SELECT * from `productType`");
+            pstmt = connection.prepareStatement("SELECT * from `product_type`");
             resultSet = pstmt.executeQuery();
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -103,7 +103,7 @@ public class ProductTypeRepository {
         Connection connection = SQLConnector.getConnection();
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `productType` values (0,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `product_type` values (0,?)");
 
             preparedStatement.setString(1, productType.getName());
 
@@ -123,7 +123,7 @@ public class ProductTypeRepository {
 
         Connection connection = SQLConnector.getConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE `productType` SET name = ? WHERE id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE `product_type` SET name = ? WHERE id = ?");
             preparedStatement.setString(1,productType.getName());
             preparedStatement.setInt(2,productType.getId());
 
@@ -147,7 +147,7 @@ public class ProductTypeRepository {
     public void delete(int id) {
         Connection connection = SQLConnector.getConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM `productType` where id=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM `product_type` where id=?");
             preparedStatement.setInt(1, id);
             int i = preparedStatement.executeUpdate();
 
