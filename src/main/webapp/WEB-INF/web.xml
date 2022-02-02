@@ -12,6 +12,15 @@
         <servlet-name>ingredientController</servlet-name>
         <url-pattern>/ingredient</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>orderController</servlet-name>
+        <servlet-class>com.example.pizzamaker.controller.OrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orderController</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>productController</servlet-name>

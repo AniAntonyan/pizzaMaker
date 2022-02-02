@@ -44,7 +44,6 @@ public class IngredientRepository {
         return ingredient;
     }
 
-
     public Ingredient read(String name) {
 
         Connection connection = SQLConnector.getConnection();

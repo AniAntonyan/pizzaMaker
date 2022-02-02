@@ -2,7 +2,6 @@ package com.example.pizzamaker.model;
 
 import lombok.*;
 
-import java.util.List;
 @Getter
 @Setter
 @ToString
@@ -11,11 +10,17 @@ import java.util.List;
 @NoArgsConstructor
 
 public class Product {
+
    private int id;
+
    private int productTypeId;
+
    private String name;
+
    private float price;
+
    private String imagePath;
+
    private String currency;
 }
 

@@ -2,7 +2,6 @@ package com.example.pizzamaker.model.dto;
 
 import com.example.pizzamaker.model.Ingredient;
 import lombok.*;
-
 import java.util.List;
 
 @Getter

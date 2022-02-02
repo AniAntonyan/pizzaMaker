@@ -1,5 +1,6 @@
 package com.example.pizzamaker;
 
+import com.example.pizzamaker.repository.OrderRepository;
 import com.example.pizzamaker.repository.ProductRepository;
 import com.example.pizzamaker.util.SQLConnector;
 import com.google.gson.Gson;
@@ -18,8 +19,12 @@ public class Main {
 //            exception.printStackTrace();
 //        }
 
-        ProductRepository productRepository = new ProductRepository();
+//        ProductRepository productRepository = new ProductRepository();
+//        Gson g = new Gson();
+//        System.out.println(g.toJson(productRepository.read(1)));
+
+        OrderRepository orderRepository=new OrderRepository();
         Gson g = new Gson();
-        System.out.println(g.toJson(productRepository.read(1)));
+        System.out.println(g.toJson(orderRepository.readAll()));
     }
 }
