@@ -51,6 +51,7 @@ public class ProductTypeController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         resp.getWriter().println("this is POST method");
 
         int id = list.get(list.size() - 1).getId() + 1;
@@ -65,6 +66,7 @@ public class ProductTypeController extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         System.out.println("desk");
         resp.getWriter().println("this is PUT method");
 
@@ -92,6 +94,7 @@ public class ProductTypeController extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         resp.getWriter().println("this is a delete method");
 
         int delId = Integer.parseInt(req.getParameter("idToDelete"));

@@ -53,6 +53,7 @@ public class IngredientController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
 
         String name = req.getParameter("name");
 
@@ -62,6 +63,7 @@ public class IngredientController extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         Ingredient ingr = mapper(req);
 
         Ingredient update = ingredientService.update(ingr.getId(),ingr);
@@ -74,6 +76,7 @@ public class IngredientController extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         int id= Integer.parseInt(req.getParameter("id"));
         ingredientService.delete(id);
     }

@@ -3,6 +3,7 @@ package com.example.pizzamaker.controller;
 import com.example.pizzamaker.model.Order;
 import com.example.pizzamaker.service.OrderService;
 import com.example.pizzamaker.service.impl.OrderServiceImpl;
+import com.example.pizzamaker.util.AccessControlOriginFilter;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -19,6 +20,7 @@ public class OrderController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         String url = req.getParameter("url");
 
         switch (url) {
@@ -35,18 +37,21 @@ public class OrderController extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         Order order = mapper(req);
         orderService.create(order);
     }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         Order order = mapper(req);
         orderService.update(order);
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         int id = Integer.parseInt(req.getParameter("id"));
         orderService.delete(id);
     }
