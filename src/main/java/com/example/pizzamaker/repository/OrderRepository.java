@@ -1,6 +1,5 @@
 package com.example.pizzamaker.repository;
 
-import com.example.pizzamaker.model.Ingredient;
 import com.example.pizzamaker.model.Order;
 import com.example.pizzamaker.util.SQLConnector;
 
@@ -25,14 +24,11 @@ public class OrderRepository {
             preparedStatement.setInt(4, order.getQuantity());
             preparedStatement.setFloat(5, order.getAmount());
             int i = preparedStatement.executeUpdate();
-
-
             preparedStatement.close();
             connection.close();
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-
     }
 
     public List<Order> read(int tableId) {
@@ -47,13 +43,11 @@ public class OrderRepository {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from `order`");
             ResultSet resultSet = preparedStatement.executeQuery();
             data.addAll(listMapper(resultSet));
-
             preparedStatement.close();
             connection.close();
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-
         return data;
     }
 
@@ -68,17 +62,12 @@ public class OrderRepository {
             preparedStatement.setInt(4, order.getQuantity());
             preparedStatement.setFloat(5, order.getAmount());
             preparedStatement.setInt(6, order.getId());
-
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
-
         return order;
     }
 
@@ -95,7 +84,6 @@ public class OrderRepository {
             sqlException.printStackTrace();
         }
     }
-
 
     private List<Order> listMapper(ResultSet resultSet) throws SQLException {
         List<Order> data = new LinkedList<>();
@@ -114,6 +102,5 @@ public class OrderRepository {
         float amount = resultSet.getFloat("amount");
 
         return new Order(id, table_id, in_process, product_id, quantity, amount);
-
     }
 }

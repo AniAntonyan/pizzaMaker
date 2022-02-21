@@ -1,9 +1,7 @@
 package com.example.pizzamaker.repository;
 
-import com.example.pizzamaker.model.Ingredient;
 import com.example.pizzamaker.model.ProductType;
 import com.example.pizzamaker.util.SQLConnector;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,7 +49,6 @@ public class ProductTypeRepository {
             pstmt = connection.prepareStatement("SELECT * FROM `product_type` WHERE name=?");
             pstmt.setString(1,name);
             resultSet = pstmt.executeQuery();
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
@@ -87,7 +84,6 @@ public class ProductTypeRepository {
 
         List<ProductType> data = mapperList(resultSet);
 
-
         try {
             pstmt.close();
             resultSet.close();
@@ -95,7 +91,6 @@ public class ProductTypeRepository {
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-
         return data;
     }
 
@@ -104,19 +99,13 @@ public class ProductTypeRepository {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `product_type` values (0,?)");
-
             preparedStatement.setString(1, productType.getName());
-
-
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
     }
 
     public ProductType update(int id, ProductType productType) {
@@ -126,21 +115,16 @@ public class ProductTypeRepository {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE `product_type` SET name = ? WHERE id = ?");
             preparedStatement.setString(1,productType.getName());
             preparedStatement.setInt(2,productType.getId());
-
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
         try {
             connection.close();
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
         return productType;
     }
 
@@ -150,7 +134,6 @@ public class ProductTypeRepository {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM `product_type` where id=?");
             preparedStatement.setInt(1, id);
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
             connection.close();
         } catch (SQLException exception) {

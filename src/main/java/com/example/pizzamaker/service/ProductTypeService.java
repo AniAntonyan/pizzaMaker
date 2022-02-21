@@ -1,7 +1,6 @@
 package com.example.pizzamaker.service;
 
 import com.example.pizzamaker.model.ProductType;
-
 import java.util.List;
 
 public interface ProductTypeService {

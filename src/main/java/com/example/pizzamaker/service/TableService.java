@@ -1,8 +1,6 @@
 package com.example.pizzamaker.service;
 
 import com.example.pizzamaker.model.Table;
-import javafx.scene.control.Tab;
-
 import java.util.List;
 
 public interface TableService {
@@ -20,6 +18,5 @@ public interface TableService {
     Table update(int id, Table table);
 
     void delete(int id);
-
 }
 

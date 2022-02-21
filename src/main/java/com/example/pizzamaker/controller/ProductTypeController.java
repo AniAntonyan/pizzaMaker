@@ -5,7 +5,6 @@ import com.example.pizzamaker.service.ProductTypeService;
 import com.example.pizzamaker.service.impl.ProductTypeServiceImpl;
 import com.example.pizzamaker.util.AccessControlOriginFilter;
 import com.google.gson.Gson;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,6 @@ public class ProductTypeController extends HttpServlet {
     private List<ProductType> list = new LinkedList<>();
     private static Random random = new Random();
     private Gson gson = new Gson();
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,7 +43,6 @@ public class ProductTypeController extends HttpServlet {
                 resp.sendError(404, "provided URL not found for analyse");
                 break;
         }
-
         resp.getWriter().println(gson.toJson(data));
     }
 
@@ -56,12 +53,6 @@ public class ProductTypeController extends HttpServlet {
 
         int id = list.get(list.size() - 1).getId() + 1;
         String name = req.getParameter("name");
-
-        //ProductType data = new ProductType(id,name);
-
-        //list.add(data);
-
-        //resp.getWriter().println(gson.toJson(list));
     }
 
     @Override
@@ -71,7 +62,6 @@ public class ProductTypeController extends HttpServlet {
         resp.getWriter().println("this is PUT method");
 
         ProductType pdtype = null;
-
         int id = Integer.parseInt(req.getParameter("id"));
 
         for (int i = 0; i < list.size(); i++){
@@ -105,5 +95,4 @@ public class ProductTypeController extends HttpServlet {
 
         resp.getWriter().println(gson.toJson(list));
     }
-
 }

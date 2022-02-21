@@ -10,6 +10,8 @@ import lombok.*;
 @NoArgsConstructor
 
 public class Ingredient {
+
     private int id;
+
     private String name;
 }

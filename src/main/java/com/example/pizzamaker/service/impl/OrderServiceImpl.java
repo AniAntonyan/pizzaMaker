@@ -6,7 +6,6 @@ import com.example.pizzamaker.model.dto.OrderDto;
 import com.example.pizzamaker.repository.OrderRepository;
 import com.example.pizzamaker.service.OrderService;
 import com.example.pizzamaker.service.ProductService;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,7 +35,6 @@ public class OrderServiceImpl implements OrderService {
             data.getProducts().add(product);
         }
         data.setAmount(amount);
-
         return data;
     }
 
@@ -57,26 +55,18 @@ public class OrderServiceImpl implements OrderService {
                 Product product = productService.readProduct(item.getProductId());
                 orderDto.getProducts().add(product);
                 orderDto.setAmount(orderDto.getAmount() + product.getPrice() * item.getQuantity());
-
-
             } else {
                 OrderDto orderDto = new OrderDto();
                 orderDto.setTableId(item.getTableId());
                 orderDto.setInProcess(item.isInProcess());
                 orderDto.setProducts(new LinkedList<>());
-
                 Product product = productService.readProduct(item.getProductId());
                 orderDto.getProducts().add(product);
                 orderDto.setAmount(item.getQuantity() * product.getPrice());
                 data.add(orderDto);
-
             }
-
-            // checked identifier
             item.setId(-1);
         });
-
-
         return data;
     }
 
@@ -87,7 +77,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void delete(int tableId) {
-
         orderRepository.delete(tableId);
     }
 }

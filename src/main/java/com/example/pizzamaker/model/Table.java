@@ -12,8 +12,11 @@ import lombok.*;
 public class Table {
 
     private int id;
+
     private int number;
+
     private int seats;
+
     private boolean busy;
 
 }

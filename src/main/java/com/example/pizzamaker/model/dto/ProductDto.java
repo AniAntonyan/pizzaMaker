@@ -10,6 +10,7 @@ import java.util.List;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class ProductDto {
     private int id;
     private transient int ingredientId;
@@ -19,6 +20,5 @@ public class ProductDto {
     private transient String ingredientName;
     private String imagePath;
     private String currency;
-
     List<Ingredient> ingredients ;
 }

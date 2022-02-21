@@ -13,12 +13,10 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-
 public class ProductController extends HttpServlet {
 
     private final ProductService productService = new ProductServiceImpl();
     private final Gson gson = new Gson();
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,7 +41,6 @@ public class ProductController extends HttpServlet {
                 data.addAll(productService.readAll());
                 break;
         }
-
         resp.getWriter().println(gson.toJson(data));
     }
 

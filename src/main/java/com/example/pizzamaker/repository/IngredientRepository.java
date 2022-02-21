@@ -1,9 +1,7 @@
 package com.example.pizzamaker.repository;
 
 import com.example.pizzamaker.model.Ingredient;
-import com.example.pizzamaker.model.Table;
 import com.example.pizzamaker.util.SQLConnector;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -89,7 +87,6 @@ public class IngredientRepository {
 
         List<Ingredient> data = mapperList(resultSet);
 
-
         try {
             pstmt.close();
             resultSet.close();
@@ -97,7 +94,6 @@ public class IngredientRepository {
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-
         return data;
     }
 
@@ -110,7 +106,6 @@ public class IngredientRepository {
             int i = preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
@@ -125,11 +120,9 @@ public class IngredientRepository {
             preparedStatement.setInt(2,ingredient.getId());
             int i = preparedStatement.executeUpdate();
             preparedStatement.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
         try {
             connection.close();
         } catch (SQLException exception) {
@@ -144,7 +137,6 @@ public class IngredientRepository {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM `ingredient` where id=?");
             preparedStatement.setInt(1, id);
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
             connection.close();
         } catch (SQLException exception) {

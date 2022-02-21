@@ -51,7 +51,6 @@ public class TableController extends HttpServlet {
                 resp.sendError(404, "provided URL not found for analyse");
                 break;
         }
-
         resp.getWriter().println(gson.toJson(data));
     }
 
@@ -67,9 +66,7 @@ public class TableController extends HttpServlet {
         AccessControlOriginFilter.setAccessControlHeaders(resp);
         Table table = mapper(req);
         int id = table.getId();
-        resp.
-                getWriter().
-                println(gson.toJson(tableService.update(id, table)));
+        resp.getWriter().println(gson.toJson(tableService.update(id, table)));
     }
 
     @Override
@@ -77,9 +74,7 @@ public class TableController extends HttpServlet {
         AccessControlOriginFilter.setAccessControlHeaders(resp);
         int id = Integer.parseInt(req.getParameter("id"));
         tableService.delete(id);
-
     }
-
 
     private Table mapper(HttpServletRequest req) {
         int id;

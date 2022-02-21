@@ -3,7 +3,6 @@ package com.example.pizzamaker.service.impl;
 import com.example.pizzamaker.model.ProductType;
 import com.example.pizzamaker.repository.ProductTypeRepository;
 import com.example.pizzamaker.service.ProductTypeService;
-
 import java.util.List;
 
 public class ProductTypeServiceImpl implements ProductTypeService {
@@ -18,7 +17,6 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public List<ProductType> readAll() {
         return productTypeRepository.readAll();
     }
-
 
     @Override
     public void create(ProductType productType) {

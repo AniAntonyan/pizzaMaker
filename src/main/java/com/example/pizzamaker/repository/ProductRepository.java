@@ -33,20 +33,15 @@ public class ProductRepository {
                     "where product_to_ingredient.product_id = ?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-
             data.addAll(listMapper(resultSet));
-
-
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
         return data;
     }
 
     public List<ProductDto> readAll() {
         List<ProductDto> data = new LinkedList<>();
-
         Connection connection = SQLConnector.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select product_type_id,\n" +
@@ -64,15 +59,11 @@ public class ProductRepository {
                     "                    on product_to_ingredient.ingredient_id = ingredient.id\n");
             ResultSet resultSet = preparedStatement.executeQuery();
             data.addAll(listMapper(resultSet));
-
-
             resultSet.close();
             connection.close();
-
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
         return data;
     }
 
@@ -88,7 +79,6 @@ public class ProductRepository {
             int i = preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
@@ -107,7 +97,6 @@ public class ProductRepository {
             int i = preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }

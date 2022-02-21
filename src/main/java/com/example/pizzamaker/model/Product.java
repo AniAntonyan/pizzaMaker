@@ -11,16 +11,16 @@ import lombok.*;
 
 public class Product {
 
-   private int id;
+    private int id;
 
-   private int productTypeId;
+    private int productTypeId;
 
-   private String name;
+    private String name;
 
-   private float price;
+    private float price;
 
-   private String imagePath;
+    private String imagePath;
 
-   private String currency;
+    private String currency;
 }
 

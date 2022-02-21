@@ -2,7 +2,6 @@ package com.example.pizzamaker.service;
 
 import com.example.pizzamaker.model.Order;
 import com.example.pizzamaker.model.dto.OrderDto;
-
 import java.util.List;
 
 public interface OrderService {

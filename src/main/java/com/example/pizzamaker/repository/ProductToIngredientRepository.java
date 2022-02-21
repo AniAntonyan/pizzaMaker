@@ -28,11 +28,9 @@ public class ProductToIngredientRepository {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM `product_to_ingredient`");
             ResultSet resultSet = preparedStatement.executeQuery();
             data.addAll(listMapper(resultSet));
-
             resultSet.close();
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
@@ -47,10 +45,8 @@ public class ProductToIngredientRepository {
             preparedStatement.setInt(1, productToIngredient.getIngredientId());
             preparedStatement.setInt(2, productToIngredient.getProductId());
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
@@ -64,10 +60,8 @@ public class ProductToIngredientRepository {
             preparedStatement.setInt(1, productToIngredient.getIngredientId());
             preparedStatement.setInt(2, productToIngredient.getProductId());
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
@@ -82,7 +76,6 @@ public class ProductToIngredientRepository {
             int i = preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
@@ -96,7 +89,6 @@ public class ProductToIngredientRepository {
             int i = preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }

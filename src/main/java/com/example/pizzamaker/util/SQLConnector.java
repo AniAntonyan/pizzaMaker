@@ -10,7 +10,6 @@ public class SQLConnector {
     private static final String password="";
     private static final String DB="pizzamakerservice";
     private static final String url="jdbc:mysql://localhost:3306/"+DB;
-
     private static Connection connection=null;
 
     public SQLConnector() {

@@ -2,7 +2,6 @@ package com.example.pizzamaker.repository;
 
 import com.example.pizzamaker.model.Table;
 import com.example.pizzamaker.util.SQLConnector;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,12 +19,11 @@ public class TableRepository {
             pstmt = connection.prepareStatement("SELECT * from `table` WHERE id=?");
             pstmt.setInt(1, id);
             resultSet = pstmt.executeQuery();
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
         Table table=null;
-        try{
+        try {
             while (resultSet.next()){
                 table=mapper(resultSet);
             }
@@ -40,11 +38,9 @@ public class TableRepository {
             sqlException.printStackTrace();
         }
         return table;
-
     }
 
     public List<Table> readAll() {
-
         Connection connection = SQLConnector.getConnection();
         PreparedStatement pstmt = null;
         ResultSet resultSet = null;
@@ -55,10 +51,7 @@ public class TableRepository {
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-
         List<Table> data = mapperList(resultSet);
-
-
         try {
             pstmt.close();
             resultSet.close();
@@ -66,7 +59,6 @@ public class TableRepository {
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-
         return data;
     }
 
@@ -78,12 +70,9 @@ public class TableRepository {
             preparedStatement.setInt(1, table.getNumber());
             preparedStatement.setInt(2, table.getSeats());
             preparedStatement.setBoolean(3, table.isBusy());
-
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
             connection.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
@@ -97,21 +86,16 @@ public class TableRepository {
             preparedStatement.setInt(2, table.getSeats());
             preparedStatement.setBoolean(3, table.isBusy());
             preparedStatement.setInt(4, table.getId());
-
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
         try {
             connection.close();
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
         return table;
     }
 
@@ -122,13 +106,11 @@ public class TableRepository {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM `table` where id=?");
             preparedStatement.setInt(1, id);
             int i = preparedStatement.executeUpdate();
-
             preparedStatement.close();
             connection.close();
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
     }
 
     private static List<Table> mapperList(ResultSet resultSet) {
@@ -150,7 +132,6 @@ public class TableRepository {
             t.setNumber(resultSet.getInt("number"));
             t.setSeats(resultSet.getInt("seats"));
             t.setBusy(resultSet.getBoolean("is_busy"));
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }

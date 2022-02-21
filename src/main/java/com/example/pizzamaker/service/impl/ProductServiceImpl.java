@@ -7,17 +7,14 @@ import com.example.pizzamaker.model.dto.ProductDto;
 import com.example.pizzamaker.repository.ProductRepository;
 import com.example.pizzamaker.repository.ProductToIngredientRepository;
 import com.example.pizzamaker.service.ProductService;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 public class ProductServiceImpl implements ProductService {
 
     ProductRepository productRepository = new ProductRepository();
     ProductToIngredientRepository productToIngredientRepository = new ProductToIngredientRepository();
-
 
     @Override
     public Product readProduct(int id) {
@@ -51,7 +48,6 @@ public class ProductServiceImpl implements ProductService {
             Ingredient ingredient = new Ingredient(item.getIngredientId(), item.getIngredientName());
             productDto.getIngredients().add(ingredient);
         });
-
         return productDto;
     }
 
@@ -82,10 +78,7 @@ public class ProductServiceImpl implements ProductService {
                 data.add(productDto);
             }
             item.setId(-1);
-
         });
-
-
         return data;
     }
 
@@ -96,26 +89,21 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void create(ProductDto productDto) {
-
         if (productDto == null) {
             return;
         }
-
         Product product = new Product();
         productRepository.create(product);
 
         productDto.getIngredients().forEach(item -> {
             ProductToIngredient productToIngredient = new ProductToIngredient();
-
             productToIngredient.setIngredientId(item.getId());
             List<ProductDto> productDtos = productRepository.readAll();
             int id = productDtos.get(productDtos.size() - 1).getId();
             productToIngredient.setProductId(id);
             productToIngredientRepository.create(productToIngredient);
         });
-
     }
-
 
     @Override
     public ProductDto update(int id, ProductDto productDto) {
@@ -129,7 +117,6 @@ public class ProductServiceImpl implements ProductService {
             p.setCurrency(productDto.getCurrency());
             productRepository.update(p);
         }
-
         if (productToIngredientRepository.readByProduct(id) != null) {
             List<Ingredient> ingredients = productDto.getIngredients();
             ingredients.forEach(item -> {
